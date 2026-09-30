@@ -70,13 +70,29 @@ pipeline {
                 echo 'Checking application availability'
 
                 sh '''
-                    curl --fail \
-                    --silent \
-                    --show-error \
-                    --retry 10 \
-                    --retry-delay 2 \
-                    --retry-connrefused \
-                    http://127.0.0.1:${APP_PORT}/
+                    echo "Waiting for application to become ready..."
+
+                    for i in $(seq 1 30); do
+
+                        if curl --fail \
+                            --silent \
+                            --show-error \
+                            http://127.0.0.1:${APP_PORT}/; then
+
+                            echo ""
+                            echo "Application is UP!"
+                            exit 0
+                        fi
+
+                        echo "Application not ready yet... attempt $i/30"
+                        sleep 2
+                    done
+
+                    echo "Application failed to start."
+                    echo "Container logs:"
+                    docker logs ${CONTAINER_NAME}
+
+                    exit 1
                 '''
             }
         }
