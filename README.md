@@ -146,4 +146,4 @@ Running Application
 ---
 
 ## 🏆 Output
-
+![Project Architecture](Result/Jenkins.png)
