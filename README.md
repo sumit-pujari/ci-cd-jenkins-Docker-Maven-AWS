@@ -146,4 +146,13 @@ Running Application
 ---
 
 ## 🏆 Output
-![Project Architecture](Result/Jenkins.png)
+![Jenkins Pipeline](Result/Jenkins_Pipeline.png)
+
+---
+![AWS EC2](Result/AWS_EC2.png)
+
+---
+![Docker_Containerization](Result/Containerization.png)
+
+---
+![Hosting](Result/Hosting.png)
